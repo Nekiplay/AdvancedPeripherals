@@ -36,6 +36,8 @@ public class GeoScannerPeripheral extends BasePeripheral<IPeripheralOwner> {
 	Highly inspired by https://github.com/SquidDev-CC/plethora/ BlockScanner
 	*/
 
+
+	//
     public static final String TYPE = "geoScanner";
 
     protected GeoScannerPeripheral(IPeripheralOwner owner) {
