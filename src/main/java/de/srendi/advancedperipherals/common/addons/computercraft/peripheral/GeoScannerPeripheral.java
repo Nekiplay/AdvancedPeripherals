@@ -27,10 +27,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static de.srendi.advancedperipherals.common.addons.computercraft.operations.SphereOperation.SCAN_BLOCKS;
 
@@ -58,6 +55,12 @@ public class GeoScannerPeripheral extends BasePeripheral<IPeripheralOwner> {
         this(new PocketPeripheralOwner(pocket));
     }
 
+    private static boolean isWithinVerticalRange(BlockPos block, BlockPos center, int radius) {
+        // Adjust this method to define the vertical range criteria
+        // Return true if the block is within the desired vertical range from the player
+        double verticalDistance = Math.abs(block.getY() - center.getY());
+        return verticalDistance <= radius;
+    }
     private static List<Map<String, ?>> scan(World world, BlockPos center, int radius) {
         List<Map<String, ?>> result = new ArrayList<>();
         ScanUtils.relativeTraverseBlocks(world, center, radius, (state, pos) -> {
@@ -74,7 +77,6 @@ public class GeoScannerPeripheral extends BasePeripheral<IPeripheralOwner> {
 
             result.add(data);
         });
-
         return result;
     }
 

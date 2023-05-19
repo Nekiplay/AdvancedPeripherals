@@ -121,6 +121,16 @@ public abstract class BasePeripheral<O extends IPeripheralOwner> implements IBas
         return owner.getPos();
     }
 
+    @LuaFunction
+    public final MethodResult getPosition() throws LuaException {
+        BlockPos pos = getPos();
+        Map<String, Object> data = new HashMap<>(3);
+        data.put("x", pos.getX());
+        data.put("y", pos.getY());
+        data.put("z", pos.getZ());
+        return MethodResult.of(data);
+    }
+
     protected World getWorld() {
         return owner.getWorld();
     }
