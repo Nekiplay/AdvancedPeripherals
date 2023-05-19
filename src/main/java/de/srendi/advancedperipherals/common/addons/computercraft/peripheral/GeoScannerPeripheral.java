@@ -54,13 +54,7 @@ public class GeoScannerPeripheral extends BasePeripheral<IPeripheralOwner> {
     public GeoScannerPeripheral(IPocketAccess pocket) {
         this(new PocketPeripheralOwner(pocket));
     }
-
-    private static boolean isWithinVerticalRange(BlockPos block, BlockPos center, int radius) {
-        // Adjust this method to define the vertical range criteria
-        // Return true if the block is within the desired vertical range from the player
-        double verticalDistance = Math.abs(block.getY() - center.getY());
-        return verticalDistance <= radius;
-    }
+	
     private static List<Map<String, ?>> scan(World world, BlockPos center, int radius) {
         List<Map<String, ?>> result = new ArrayList<>();
         ScanUtils.relativeTraverseBlocks(world, center, radius, (state, pos) -> {
